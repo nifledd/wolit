@@ -78,7 +78,7 @@ def print_menu():
             input("Coś wpisał*ś źle(kliknij dowolny przycisk)")
             continue
 def read_random_word():
-    with open("kutas.txt","r") as file:
+    with open("slowa1.txt","r") as file:
         words = file.read().split()
         return random.choice(words)
 def check_input():
@@ -86,7 +86,7 @@ def check_input():
     while True:
         print("\n",colored(tablica_wykluczen, "red"))
         guess = input("\nPodaj słowo: ").lower()
-        '''with open("kutas.txt","r") as file1:
+        '''with open("slowa1.txt","r") as file1:
             file = file1.read().split()
             for i in file:
                 if guess == i:
@@ -122,13 +122,13 @@ while True:
     while True:
         IsExists = input("Czy znasz to słowo?(tak/nie): ")
         if IsExists == "nie":
-            with open("kutas.txt", "r", encoding="utf-8") as filetodel:
+            with open("slowa1.txt", "r", encoding="utf-8") as filetodel:
                 DEL = filetodel.read().split()
                 for words in DEL:
                     if words == word:
                         DEL.remove(word)
 
-            with open("kutas.txt", "w", encoding="utf-8") as filetodelout:
+            with open("slowa1.txt", "w", encoding="utf-8") as filetodelout:
                 for OutputText in DEL:
                     filetodelout.write(OutputText+"\n")
             filetodelout.close()
