@@ -1,16 +1,17 @@
 import random
 import sys
 import time
+import os
 from time import sleep
 from termcolor import colored
 import threading
 import itertools
 import webbrowser
-
 tablica_wykluczen = []
 cntgames = 6
 tablica_kolorow = []
 done = False
+os.system("color")
 
 
 def animate():
@@ -43,7 +44,7 @@ def rules():
     sl()
     print("1. Wpisz słowo 5-cio literowe, a...")
     sl()
-    print(colored("2. Jeżeli litera podświetliła się na niebiesko to oznacza,\nże litera występuje w słowie, ale na złym miejscu","blue"))
+    print(colored("2. Jeżeli litera podświetliła się na niebiesko to oznacza,\nże litera występuje w słowie, ale na złym miejscu","cyan"))
     sl()
     print(colored("3. Jeżeli litera podświetla się na zielono to oznacza,\nże litera występuje w haśle i jest na dobrym miejscu","green"))
     sl()
@@ -80,16 +81,15 @@ def print_menu():
             input("Coś wpisał*ś źle(kliknij dowolny przycisk)")
             continue
 def read_random_word():
-    with open("kutas.txt","r") as file:
+    with open("slowa1.txt","r",encoding="utf-8") as file:
         words = file.read().split()
         return random.choice(words)
 def check_input():
     global tablica_wykluczen
     while True:
-
         print("\n",colored(tablica_wykluczen, "red"))
         guess = input("\nPodaj słowo: ").lower()
-        '''with open("kutas.txt","r") as file1:
+        '''with open("slowa1.txt","r") as file1:
             file = file1.read().split()
             for i in file:
                 if guess == i:
@@ -113,7 +113,7 @@ while True:
                 if guess[i] in tablica_kolorow:
                     print(guess[i], end="")
                 else:
-                    print(colored(guess[i],'blue'), end="")
+                    print(colored(guess[i],'cyan'), end="")
             else:
                 print(guess[i],end="")
                 if guess[i] not in tablica_wykluczen:
@@ -141,13 +141,13 @@ while True:
             while True:
                 RUS = input("Usunąć z bazy to słowo?(tak/nie)").lower()
                 if RUS == "tak":
-                    with open("kutas.txt", "r", encoding="utf-8") as filetodel:
+                    with open("slowa1.txt", "r", encoding="utf-8") as filetodel:
                         DEL = filetodel.read().split()
                         for words in DEL:
                             if words == word:
                                 DEL.remove(word)
 
-                    with open("kutas.txt", "w", encoding="utf-8") as filetodelout:
+                    with open("slowa1.txt", "w", encoding="utf-8") as filetodelout:
                         for OutputText in DEL:
                             filetodelout.write(OutputText+"\n")
                     filetodelout.close()
